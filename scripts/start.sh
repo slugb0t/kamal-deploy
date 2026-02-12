@@ -31,7 +31,7 @@ echo "Running test migration..."
 # This ensures the database schema is up to date before starting the app
 # The 'deploy' command is safe for production as it only applies pending migrations
 # Force npx to use the local v6 version instead of downloading v7
-npx prisma@6.0.0 migrate deploy
+npx prisma migrate deploy
 
 echo "Migrations complete. Starting..."
 
