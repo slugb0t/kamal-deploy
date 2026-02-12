@@ -25,13 +25,13 @@ until nc -z "${DB_HOST}" 5432; do
   sleep 2
 done
 
-echo "Running yarn migration..."
+echo "Running migration..."
 
 # Deploy any pending Prisma migrations to the database
 # This ensures the database schema is up to date before starting the app
 # The 'deploy' command is safe for production as it only applies pending migrations
 # Force npx to use the local v6 version instead of downloading v7
-yarn run prisma:migrate:deploy
+npx prisma migrate deploy
 
 echo "Migrations complete. Starting..."
 
