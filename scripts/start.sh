@@ -25,7 +25,7 @@ until nc -z "${DB_HOST}" 5432; do
   sleep 2
 done
 
-echo "Running test migration..."
+echo "Running database migrations..."
 
 # Deploy any pending Prisma migrations to the database
 # This ensures the database schema is up to date before starting the app
