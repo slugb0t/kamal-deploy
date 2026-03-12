@@ -58,6 +58,14 @@ registry:
 # Settings for building your Docker image
 builder:
   arch: amd64  # Target architecture for the built image
+
+  # Docker Buildx cache configuration for faster builds
+  # This enables layer caching between CI runs using the container registry
+  cache:
+    type: registry
+    options: mode=max
+    image: <%= ENV["KAMAL_IMAGE_NAME"] %>-build-cache
+
   # Pass in additional build args needed for your Dockerfile.
   # args:
   #   RUBY_VERSION: <%= ENV["RBENV_VERSION"] || ENV["rvm_ruby_string"] || "#{RUBY_ENGINE}-#{RUBY_ENGINE_VERSION}" %>

@@ -30,12 +30,12 @@ echo "Running database migrations..."
 # Deploy any pending Prisma migrations to the database
 # This ensures the database schema is up to date before starting the app
 # The 'deploy' command is safe for production as it only applies pending migrations
-# Force npx to use the v6 version instead of downloading v7
-npx prisma@6.0.0 migrate deploy
+# Use the exact Prisma version installed in the Docker image
+yarn prisma migrate deploy
 
-echo "Migrations complete. Starting..."
+echo "Migrations complete. Starting application..."
 
 # Start the Node.js application server
 # exec replaces the current shell process with the node process
 # This ensures proper signal handling (SIGTERM, SIGINT, etc.) for graceful shutdowns
-exec node /app/server/index.mjs
+exec node .output/server/index.mjs
